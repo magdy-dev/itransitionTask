@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration Success</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container text-center">
+        <h4><a th:href="@{/login}" th:text="#{register.login}"></a></h4>
+        <a th:href="@{/users}" th:text="#{new_employee.backTo}"></a>
+    </div>
+
+</nav>
+<h3 th:text="#{register.seuccess}"></h3>
+<div class="spinner-grow text-primary" role="status">
+    <span class="visually-hidden" th:text="#{register.seuccessf}"></span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+    <span class="visually-hidden" th:text="#{register.seuccessf}"></span>
+</div>
+<div class="spinner-grow text-success" role="status">
+    <span class="visually-hidden" th:text="#{register.seuccessf}"></span>
+</div>
+</body>
+</html>

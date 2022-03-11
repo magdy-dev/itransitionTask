@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Welcome to CodeJava Home</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body bgcolor="#483d8b">
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<div class="card badge bg-dark">
+    <div class="card-body  ">
+
+        <a class="btn btn-primary  bg-light text-dark fs-2" th:href="@{/users}" th:text="#{label.listU}"></a>
+        <a class="btn btn-primary  bg-light text-dark fs-2" th:href="@{/register}" th:text="#{label.register}"></a>
+        <a class="btn btn-primary  bg-light text-dark fs-2" th:href="@{/login}" th:text="#{label.login}"></a>
+        <a  class="btn btn-primary bg-light text-dark fs-2" href="/?lang=en" th:text="#{label.long.en}"></a>
+        <a class="btn btn-primary  bg-light text-dark fs-2" href="/?lang=fr" th:text="#{label.long.fr}"></a>
+        <a class="btn btn-primary  bg-light text-dark fs-2" href="/?lang=ru" th:text="#{label.long.ru}"></a>
+
+    </div>
+</div>
+<img th:src="@{images/by-01.jpg}" class="img-fluid" alt="minsk"/>
+
+
+</body>
+</html>
