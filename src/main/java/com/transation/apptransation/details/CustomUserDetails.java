@@ -1,6 +1,8 @@
 package com.transation.apptransation.details;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 import com.transation.apptransation.entity.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,7 +18,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singletonList(user.getRole());
     }
 
     @Override

@@ -1,10 +1,15 @@
 package com.transation.apptransation.service;
 
 
+import com.transation.apptransation.details.CustomUserDetails;
 import com.transation.apptransation.entity.Employee;
+import com.transation.apptransation.entity.User;
 import com.transation.apptransation.repository.EmployeeRepository;
+import com.transation.apptransation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +20,7 @@ import java.util.Optional;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+
     @Autowired
     public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
 
@@ -25,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> getAllEmployees() throws ServiceException {
         try {
             return employeeRepository.findAll();
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             throw new ServiceException(" employee cant find all");
         }
 
@@ -36,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void saveEmployee(Employee employee) throws ServiceException {
         try {
             this.employeeRepository.save(employee);
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             throw new ServiceException("employee cant save");
         }
 
@@ -58,10 +64,29 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployeeById(long id) throws ServiceException {
         try {
             this.employeeRepository.deleteById(id);
-        }catch (DataAccessException e){
+        } catch (DataAccessException e) {
             throw new ServiceException("employee cant delete by id ");
         }
 
 
     }
+
+    @Override
+    public Employee findStudentByName(String name) throws ServiceException {
+
+
+          Employee employee= employeeRepository.findByFirstName(name);
+        if (employee == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        return employee;
+    }
+
+
+
+
+
+
+
+
 }

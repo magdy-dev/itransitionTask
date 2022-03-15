@@ -1,6 +1,7 @@
 package com.transation.apptransation.config;
 
 
+import com.transation.apptransation.details.CustamLoginSuccessHandler;
 import com.transation.apptransation.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,9 +19,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private CustamLoginSuccessHandler handler;
 
     @Bean
     public UserDetailsService userDetailsService() {
+
         return new CustomUserDetailsService();
     }
 
@@ -45,7 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -54,16 +57,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .usernameParameter("email")
-                .defaultSuccessUrl("/users")
+                .successHandler(handler)
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
 
 
-
     }
-
-
 
 
 }

@@ -1,6 +1,7 @@
 package com.transation.apptransation.controller;
 
 
+import com.transation.apptransation.entity.Role;
 import com.transation.apptransation.entity.User;
 import com.transation.apptransation.repository.UserRepository;
 import lombok.extern.log4j.Log4j2;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -25,30 +27,35 @@ public class AppController {
     @GetMapping("")
     public String viewHomePage(Model model, HttpServletRequest request) {
 
-        Locale locale=request.getLocale();
+        Locale locale = request.getLocale();
         String countryCode = locale.getCountry();
         String countryName = locale.getDisplayCountry();
-        String langeCode =locale.getLanguage();
+        String langeCode = locale.getLanguage();
         String langeName = locale.getDisplayLanguage();
-        log.info(countryCode+":"+countryName);
-        log.info(langeCode+":"+langeName);
+        log.info(countryCode + ":" + countryName);
+        log.info(langeCode + ":" + langeName);
 
-        String [] languages =Locale.getISOLanguages();
-        for (String language : languages){
-            Locale local=new Locale(language);
-            log.info(language + ":"+ local.getDisplayLanguage());
+        String[] languages = Locale.getISOLanguages();
+        for (String language : languages) {
+            Locale local = new Locale(language);
+            log.info(language + ":" + local.getDisplayLanguage());
         }
-
-
         return "index";
     }
 
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new User());
 
+        model.addAttribute("user", new User());
         return "signup_form";
+    }
+
+    @GetMapping("/registerAdmin")
+    public String showRegistrationFormAdmin(Model model) {
+
+        model.addAttribute("user", new User());
+        return "signup_form_admin";
     }
 
     @PostMapping("/process_register")
@@ -56,25 +63,47 @@ public class AppController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-
-        if (user==userRepo.save(user)){
+        user.setRole(new Role("USER"));
+        if (user == userRepo.save(user)) {
             return "register_success";
-        }else
-            return "error";
+        } else
+            return "/main/resources/templates/error.html";
 
     }
 
 
+    @PostMapping("/process_register_admin")
+    public String processRegisterAdmin(User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        user.setRole(new Role("ADMIN"));
+        if (user == userRepo.save(user)) {
+            return "register_success";
+        } else
+            return "/main/resources/templates/error.html";
+
+    }
+
+    @GetMapping("/getOffice")
+    public ModelAndView getOffice() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("office");
+        return modelAndView;
 
 
-
-
-
-
-
-
-
-
-
-
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

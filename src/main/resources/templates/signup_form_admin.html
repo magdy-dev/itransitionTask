@@ -10,14 +10,13 @@
 <body>
 <nav class="navbar navbar-dark bg-dark shadow-lg p-3 mb-5 bg-body rounded">
     <!-- Navbar content -->
-    <a th:href="@{/registerAdmin}" th:text="#{admin.register}"></a>
 </nav>
 
 <div class="container text-center  shadow-lg p-3 mb-5 bg-body rounded">
     <div>
         <h1 th:text="#{signup.sign}"></h1>
     </div>
-    <form th:action="@{/process_register}" th:object="${user}"
+    <form th:action="@{/process_register_admin}" th:object="${user}"
           method="post" style="max-width: 600px; margin: 0 auto;">
         <div class="m-3">
             <div class="form-group row">

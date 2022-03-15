@@ -6,6 +6,7 @@ import com.transation.apptransation.service.EmployeeService;
 
 import com.transation.apptransation.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -91,31 +92,19 @@ public class EmployeeController {
     }
 
 
-//___________________________________________________________________________
 
-    @GetMapping("/student")
-    public String vieOffice(Model model) throws Exception {
+
+
+    @PostMapping("/findStudent")
+    public String findStudent(Model model,@Param("name") String name) throws Exception {
         try {
-            model.addAttribute("listEmployees", employeeService.getAllEmployees());
+            model.addAttribute("name", employeeService.findStudentByName(name));
 
         } catch (ServiceException e) {
             throw new Exception(e.getMessage());
         }
-        return "office";
-    }
 
-
-    @GetMapping("/showFormForMessage/{id}")
-    public String showFormForMessage(@PathVariable(value = "id") long id, Model model) throws Exception {
-        try {
-
-            Employee employee = employeeService.getEmployeeById(id);
-            model.addAttribute("employee", employee);
-        } catch (ServiceException e) {
-            throw new Exception(e.getMessage());
-        }
-
-        return "officeMessage";
+        return "redirect:my_data";
     }
 
 

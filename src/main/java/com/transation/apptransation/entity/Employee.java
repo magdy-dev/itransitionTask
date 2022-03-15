@@ -1,10 +1,8 @@
 package com.transation.apptransation.entity;
 
 
-
 import lombok.Builder;
 import lombok.Data;
-
 
 
 import javax.persistence.*;
@@ -29,7 +27,7 @@ public class Employee {
     @NotEmpty(message = "lastName cannot be empty.")
     private String lastName;
 
-    @Column(name = "email",nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     @NotEmpty(message = "email cannot be empty.")
     private String email;
 
@@ -56,7 +54,7 @@ public class Employee {
     @NotEmpty(message = "universityCode cannot be empty.")
     private String universityCode;
 
-    @Column(name = "message" )
+    @Column(name = "message")
     private String message;
 
     public Employee() {

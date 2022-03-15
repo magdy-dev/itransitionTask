@@ -9,13 +9,21 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a th:href="@{/showNewEmployeeForm}" th:text="#{index_app.naveV}"> </a>
-        <a th:href="@{/myProfile}"  th:text="#{index_app.nave_My}"></a>
         <div>
+            <form class="d-flex" th:action="@{/findStudent}" method="post">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+        <div>
+            <a th:href="@{/showNewEmployeeForm}" th:text="#{index_app.naveV}"> </a><br>
+            <a th:href="@{/myProfile}" th:text="#{index_app.nave_My}"></a>
             <form th:action="@{/logout}" method="post">
                 <input type="submit" value="Sign Out"/>
             </form>
+
         </div>
+
     </div>
 </nav>
 
@@ -25,16 +33,16 @@
         <table class="table table-sm">
             <thead>
             <tr>
-                <th th:text="#{index_app.name}"></th>
-                <th th:text="#{index_app.last}"></th>
-                <th th:text="#{index_app.email}"></th>
-                <th th:text="#{index_app.passport}"></th>
-                <th th:text="#{index_app.date}"></th>
-                <th th:text="#{index_app.country}"></th>
-                <th th:text="#{ index_app.university}"></th>
-                <th th:text="#{ index_app.birthday}"></th>
-                <th th:text="#{index_app.expiredp}"></th>
-<!--                <th> Actions</th>-->
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.name}"></th>
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.last}"></th>
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.email}"></th>
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.passport}"></th>
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.date}"></th>
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.country}"></th>
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{ index_app.university}"></th>
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{ index_app.birthday}"></th>
+                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.expiredp}"></th>
+
             </tr>
             <tr th:each="employee : ${listEmployees}">
                 <td th:text="${employee.firstName}"></td>
@@ -48,7 +56,6 @@
                 <td th:text="${employee.passportExpired}"></td>
 
                 <td class="btn-group" role="group">
-<!--                    <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-outline-info">Update</a><br>-->
 
                 </td>
             </tr>
@@ -58,14 +65,13 @@
 </div>
 
 
-
-
 <div class="card" th:each="employee : ${listEmployees}"><a th:text="#{index_app.Office}"></a>
     <div class="card-body">
         <h5 class="card-title" th:text="${employee.email}"><a th:text="#{index_app.emil}"></a></h5>
         <a th:text="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"></a>
         <p class="shadow-lg p-3 mb-5 bg-body rounded" th:text="${employee.message}"></p>
-        <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-outline-dark"><a th:text="#{index_app.click}"></a></a>
+        <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-outline-dark"><a
+                th:text="#{index_app.click}"></a></a>
     </div>
 </div>
 

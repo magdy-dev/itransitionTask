@@ -7,10 +7,9 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg p-3 mb-5 bg-body rounded">
     <div class="container-fluid">
-        <a th:href="@{/showNewEmployeeForm}"> Visa Data</a>
-        <a th:href="@{/myProfile}"> My Profile</a>
         <div>
             <form th:action="@{/logout}" method="post">
                 <input type="submit" value="Sign Out"/>
@@ -20,23 +19,21 @@
 </nav>
 
 <div class="container text-center">
-
-
     <div class="container my-2">
-        <h1>Visa List</h1>
+        <h1 class="shadow-sm p-3 mb-5 bg-body rounded" th:text="#{office.data}"></h1>
         <table class="table table-sm">
             <thead>
             <tr>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>Email</th>
-                <th>PassportNumber</th>
-                <th>Date</th>
-                <th>Country</th>
-                <th>UniversityCode</th>
-                <th>BirthDay</th>
-                <th>PassportExpired</th>
-                <th> Actions</th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_n}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_l}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_e}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_p}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_d}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_c}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_u}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_b}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_pe}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_a}"></th>
             </tr>
             <tr th:each="employee : ${listEmployees}">
                 <td th:text="${employee.firstName}"></td>
@@ -50,15 +47,16 @@
                 <td th:text="${employee.passportExpired}"></td>
 
                 <td class="btn-group" role="group">
-                    <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-outline-info">Update</a><br>
-                    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-outline-dark">Delete</a>
+                    <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-outline-info shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.send_message}"></a><br>
+
+                    <!--                    <a th:href="@{/showFormForMessage/{id}(id=${employee.id})}" class="btn btn-outline-info">Update</a><br>-->
+                    <!--                    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-outline-dark">Delete</a>-->
                 </td>
             </tr>
             </thead>
         </table>
     </div>
 </div>
-
 
 </body>
 </html>

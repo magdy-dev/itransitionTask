@@ -7,28 +7,45 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body bgcolor="#483d8b">
-<nav class="navbar navbar-dark bg-dark">
+
+<nav class="navbar navbar-dark bg-dark shadow-lg p-3 mb-5 bg-body rounded">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 </nav>
 
-<div class="card badge bg-dark">
-    <div class="card-body  ">
+<div class="shadow-lg p-3 mb-5 bg-body rounded" style="text-align:center">
 
-        <a class="btn btn-primary  bg-light text-dark fs-2" th:href="@{/users}" th:text="#{label.listU}"></a>
-        <a class="btn btn-primary  bg-light text-dark fs-2" th:href="@{/register}" th:text="#{label.register}"></a>
-        <a class="btn btn-primary  bg-light text-dark fs-2" th:href="@{/login}" th:text="#{label.login}"></a>
-        <a  class="btn btn-primary bg-light text-dark fs-2" href="/?lang=en" th:text="#{label.long.en}"></a>
-        <a class="btn btn-primary  bg-light text-dark fs-2" href="/?lang=fr" th:text="#{label.long.fr}"></a>
-        <a class="btn btn-primary  bg-light text-dark fs-2" href="/?lang=ru" th:text="#{label.long.ru}"></a>
+    <center>
+        <div class="shadow-lg p-3 mb-5 bg-body rounded">
 
-    </div>
+            <div class="card" style="width: 18rem;">
+                <img th:src="@{images/belarus.jpg}" class="img-fluid" alt="minsk"/>
+                <div class="card-body">
+                    <h5 class="card-title  shadow p-3 mb-5 bg-body rounded">Register Or Loin</h5>
+                    <p class="card-text  shadow p-3 mb-5 bg-body rounded">Welcome To Vice Office In minsk Belarus</p>
+
+
+                    <div class="shadow-none p-3 mb-5 bg-light rounded">
+                        <a class="shadow-lg p-3 mb-5 bg-body rounded" th:href="@{/register}"
+                           th:text="#{label.register}"></a>
+                        <a class="shadow-lg p-3 mb-5 bg-body rounded" th:href="@{/login}" th:text="#{label.login}"></a>
+                        <a class="shadow-lg p-3 mb-5 bg-body rounded" href="/?lang=en" th:text="#{label.long.en}"></a>
+                        <a class="shadow-lg p-3 mb-5 bg-body rounded" href="/?lang=fr"
+                           th:text="#{label.long.fr}"></a><br>
+                        <a class="shadow-lg p-3 mb-5 bg-body rounded" href="/?lang=ru" th:text="#{label.long.ru}"></a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </center>
 </div>
-<img th:src="@{images/by-01.jpg}" class="img-fluid" alt="minsk"/>
-
-
 </body>
 </html>
+
