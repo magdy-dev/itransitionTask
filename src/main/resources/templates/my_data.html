@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="ISO-8859-1">
+    <title>Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a th:href="@{/users}" th:text="#{new_employee.backTo}"></a>
+    </div>
+</nav>
 
-<!--  <form action="#" th:action="@{/saveEmployee}" th:object="${studentEmail}" method="POST"></form>-->
+<div class="container text-center">
+    <div class="container my-2">
+        <h1 class="shadow-sm p-3 mb-5 bg-body rounded" th:text="#{office.data}"></h1>
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_i}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_n}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_l}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_e}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_p}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_d}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_c}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_u}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_b}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_pe}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.send_message}"></th>
 
-<h1> data student </h1>
+            </tr>
+            <tr th:each="student : ${passportNumber}">
+                <td th:text="${passportNumber.id}"></td>
+                <td th:text="${passportNumber.firstName}"></td>
+                <td th:text="${passportNumber.lastName}"></td>
+                <td th:text="${passportNumber.email}"></td>
+                <td th:text="${passportNumber.passportNumber}"></td>
+                <td th:text="${passportNumber.date}"></td>
+                <td th:text="${passportNumber.country}"></td>
+                <td th:text="${passportNumber.universityCode}"></td>
+                <td th:text="${passportNumber.birthday}"></td>
+                <td th:text="${passportNumber.passportExpired}"></td>
+                <td class="shadow-lg p-3 mb-5 bg-body rounded" th:text="${passportNumber.message}"></td>
+
+
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
 </body>
 </html>

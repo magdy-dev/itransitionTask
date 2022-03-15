@@ -11,8 +11,8 @@
     <div class="container-fluid">
         <div>
             <form class="d-flex" th:action="@{/findStudent}" method="post">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" name="passportNumber" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" th:text="#{search}"></button>
             </form>
         </div>
         <div>
@@ -33,27 +33,27 @@
         <table class="table table-sm">
             <thead>
             <tr>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.name}"></th>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.last}"></th>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.email}"></th>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.passport}"></th>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.date}"></th>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.country}"></th>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{ index_app.university}"></th>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{ index_app.birthday}"></th>
-                <th class="shadow p-3 mb-5 bg-body rounded" th:text="#{index_app.expiredp}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{index_app.name}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{index_app.last}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{index_app.email}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{index_app.passport}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{index_app.date}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{index_app.country}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{ index_app.university}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{ index_app.birthday}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{index_app.expiredp}"></th>
 
             </tr>
             <tr th:each="employee : ${listEmployees}">
-                <td th:text="${employee.firstName}"></td>
-                <td th:text="${employee.lastName}"></td>
-                <td th:text="${employee.email}"></td>
-                <td th:text="${employee.passportNumber}"></td>
-                <td th:text="${employee.date}"></td>
-                <td th:text="${employee.country}"></td>
-                <td th:text="${employee.universityCode}"></td>
-                <td th:text="${employee.birthday}"></td>
-                <td th:text="${employee.passportExpired}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.firstName}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.lastName}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.email}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.passportNumber}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.date}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.country}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.universityCode}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.birthday}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.passportExpired}"></td>
 
                 <td class="btn-group" role="group">
 

@@ -14,7 +14,7 @@ public interface  EmployeeService {
 
     void deleteEmployeeById(long id) throws ServiceException;
 
-    Employee findStudentByName(String  name) throws ServiceException;
+    Employee findStudentByNumber(String  passportNumber) throws ServiceException;
 
 
 }

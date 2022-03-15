@@ -72,10 +72,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findStudentByName(String name) throws ServiceException {
+    public Employee findStudentByNumber(String passportNumber) throws ServiceException {
 
 
-          Employee employee= employeeRepository.findByFirstName(name);
+          Employee employee= employeeRepository.findByPassportNumber(passportNumber);
         if (employee == null) {
             throw new UsernameNotFoundException("User not found");
         }

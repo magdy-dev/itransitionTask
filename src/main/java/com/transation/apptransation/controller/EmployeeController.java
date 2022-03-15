@@ -96,15 +96,15 @@ public class EmployeeController {
 
 
     @PostMapping("/findStudent")
-    public String findStudent(Model model,@Param("name") String name) throws Exception {
+    public String findStudent(Model model,@Param("passportNumber") String passportNumber) throws Exception {
         try {
-            model.addAttribute("name", employeeService.findStudentByName(name));
+            model.addAttribute("passportNumber", employeeService.findStudentByNumber(passportNumber));
 
         } catch (ServiceException e) {
             throw new Exception(e.getMessage());
         }
 
-        return "redirect:my_data";
+        return "/my_data";
     }
 
 
