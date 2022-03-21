@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         try {
             return employeeRepository.findAll();
         } catch (DataAccessException e) {
-            throw new ServiceException(" employee cant find all");
+            throw new ServiceException(" employee cant find all" + e);
         }
 
 
@@ -41,26 +41,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void saveEmployee(Employee employee) throws ServiceException {
         try {
             Passport passport = employee.getPassport();
-            if (passport.getPassportNumber()!=null) {
+            if (passport.getPassportNumber() != null) {
 
 
                 passport.setPassportNumber(passport.getPassportNumber().toUpperCase());
             }
             this.employeeRepository.save(employee);
         } catch (DataAccessException e) {
-            throw new ServiceException("employee cant save",e);
+            throw new ServiceException("employee cant save", e);
         }
 
 
     }
-//
-//    @Override
-//    public void saveMessage(String message) throws ServiceException {
-//        Employee employee=new Employee();
-//        employee.setMessage();
-//                employeeRepository.save(message);
-//
-//    }
+
 
     @Override
     public Employee getEmployeeById(long id) throws ServiceException {
@@ -79,7 +72,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         try {
             this.employeeRepository.deleteById(id);
         } catch (DataAccessException e) {
-            throw new ServiceException("employee cant delete by id ");
+            throw new ServiceException("employee cant delete by id " + e);
         }
 
 
@@ -89,18 +82,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findStudentByNumber(String passportNumber) throws ServiceException {
 
 
-          Employee employee= employeeRepository.findByPassportPassportNumber(passportNumber.toUpperCase());
+        Employee employee = employeeRepository.findByPassportPassportNumber(passportNumber.toUpperCase());
         if (employee == null) {
             return new Employee();
         }
         return employee;
     }
-
-
-
-
-
-
 
 
 }

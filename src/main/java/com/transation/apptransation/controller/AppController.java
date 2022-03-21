@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,9 +48,9 @@ public class AppController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model) throws ServiceException {
         try {
-        model.addAttribute("user", new User());
+            model.addAttribute("user", new User());
 
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new ServiceException(e.getMessage());
         }
         return "signup_form";
@@ -61,9 +60,9 @@ public class AppController {
     public String showRegistrationFormAdmin(Model model) throws ServiceException {
 
         try {
-        model.addAttribute("user", new User());
+            model.addAttribute("user", new User());
 
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new ServiceException(e.getMessage());
         }
         return "signup_form_admin";
@@ -104,19 +103,6 @@ public class AppController {
 
 
     }
-//
-//
-//    @PostMapping("/login")
-//    public String login() {
-//        return "login";
-//
-//    }
-//
-//    @PostMapping("/logout")
-//    public String logout() {
-//        return "/";
-//
-//    }
 
 }
 
