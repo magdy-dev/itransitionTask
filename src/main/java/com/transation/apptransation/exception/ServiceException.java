@@ -1,4 +1,4 @@
-package com.transation.apptransation.service;
+package com.transation.apptransation.exception;
 
 public class ServiceException extends Exception {
 

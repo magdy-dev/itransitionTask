@@ -10,6 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-    @Query("SELECT u FROM Employee u WHERE u.passportNumber = ?1")
-    public Employee findByPassportNumber(String number);
+    public Employee findByPassportPassportNumber(String number);
 }

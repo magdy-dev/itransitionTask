@@ -4,11 +4,13 @@ package com.transation.apptransation.controller;
 import com.transation.apptransation.entity.Role;
 import com.transation.apptransation.entity.User;
 import com.transation.apptransation.repository.UserRepository;
+import com.transation.apptransation.exception.ServiceException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,16 +47,25 @@ public class AppController {
 
 
     @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-
+    public String showRegistrationForm(Model model) throws ServiceException {
+        try {
         model.addAttribute("user", new User());
+
+        }catch (RuntimeException e){
+            throw new ServiceException(e.getMessage());
+        }
         return "signup_form";
     }
 
     @GetMapping("/registerAdmin")
-    public String showRegistrationFormAdmin(Model model) {
+    public String showRegistrationFormAdmin(Model model) throws ServiceException {
 
+        try {
         model.addAttribute("user", new User());
+
+        }catch (RuntimeException e){
+            throw new ServiceException(e.getMessage());
+        }
         return "signup_form_admin";
     }
 
@@ -93,6 +104,20 @@ public class AppController {
 
 
     }
+//
+//
+//    @PostMapping("/login")
+//    public String login() {
+//        return "login";
+//
+//    }
+//
+//    @PostMapping("/logout")
+//    public String logout() {
+//        return "/";
+//
+//    }
+
 }
 
 

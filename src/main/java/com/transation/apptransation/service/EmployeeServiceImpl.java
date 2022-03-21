@@ -1,22 +1,21 @@
 package com.transation.apptransation.service;
 
 
-import com.transation.apptransation.details.CustomUserDetails;
 import com.transation.apptransation.entity.Employee;
-import com.transation.apptransation.entity.User;
+import com.transation.apptransation.entity.Passport;
+import com.transation.apptransation.exception.ServiceException;
 import com.transation.apptransation.repository.EmployeeRepository;
-import com.transation.apptransation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
@@ -41,12 +40,27 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void saveEmployee(Employee employee) throws ServiceException {
         try {
+            Passport passport = employee.getPassport();
+            if (passport.getPassportNumber()!=null) {
+
+
+                passport.setPassportNumber(passport.getPassportNumber().toUpperCase());
+            }
             this.employeeRepository.save(employee);
         } catch (DataAccessException e) {
-            throw new ServiceException("employee cant save");
+            throw new ServiceException("employee cant save",e);
         }
 
+
     }
+//
+//    @Override
+//    public void saveMessage(String message) throws ServiceException {
+//        Employee employee=new Employee();
+//        employee.setMessage();
+//                employeeRepository.save(message);
+//
+//    }
 
     @Override
     public Employee getEmployeeById(long id) throws ServiceException {
@@ -75,9 +89,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findStudentByNumber(String passportNumber) throws ServiceException {
 
 
-          Employee employee= employeeRepository.findByPassportNumber(passportNumber);
+          Employee employee= employeeRepository.findByPassportPassportNumber(passportNumber.toUpperCase());
         if (employee == null) {
-            throw new UsernameNotFoundException("User not found");
+            return new Employee();
         }
         return employee;
     }

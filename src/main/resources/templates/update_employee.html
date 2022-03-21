@@ -2,20 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Employee Management System</title>
+    <title>Management-System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg p-3 mb-5 bg-body rounded">
-    <div>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
-        <a th:href="@{/office}" th:text="#{office.back}"></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/logout}" methods="post">logout</a>
+    <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link disabled"th:href="@{/office}" th:text="#{office.back}"> </a>
+            </li>
+        </ul>
     </div>
 </nav>
+
 
 <div class="container">
     <h1 class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.mes_to_userT}"></h1>
@@ -24,24 +31,17 @@
 
     <form action="#" th:action="@{/saveStudent}" th:object="${employee}" method="POST">
         <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{passport.id}"/>
         <a th:text="#{message.n}"></a>
-        <input type="text" th:field="*{firstName}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <a th:text="#{message.l}"></a>
-        <input type="text" th:field="*{lastName}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <a th:text="#{message.e}"></a>
-        <input type="text" th:field="*{email}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <a th:text="#{message.p}"></a>
-        <input type="text" th:field="*{passportNumber}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <a th:text="#{message.d}"></a>
-        <input type="text" th:field="*{date}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <a th:text="#{message.c}"></a>
-        <input type="text" th:field="*{country}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <a th:text="#{message.u}"></a>
-        <input type="text" th:field="*{universityCode}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <a th:text="#{message.b}"></a>
-        <input type="text" th:field="*{birthday}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <a th:text="#{message.pe}"></a>
-        <input type="text" th:field="*{passportExpired}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
+        <input type="text" th:field="*{passport.firstName}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded" />
+        <input type="hidden" th:field="*{passport.lastName}" />
+        <input type="hidden" th:field="*{email}" />
+        <input type="hidden" th:field="*{passport.passportNumber}" />
+        <input type="hidden" th:field="*{passport.date}"/>
+        <input type="hidden" th:field="*{passport.country}" />
+        <input type="hidden" th:field="*{universityCode}" />
+        <input type="hidden" th:field="*{passport.birthday}" />
+        <input type="hidden" th:field="*{passport.passportExpired}" />
         <a th:text="#{message.m}"></a>
         <textarea type="text" th:field="*{message}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded"></textarea>
 

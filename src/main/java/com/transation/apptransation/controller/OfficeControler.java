@@ -2,7 +2,7 @@ package com.transation.apptransation.controller;
 
 import com.transation.apptransation.entity.Employee;
 import com.transation.apptransation.service.EmployeeServiceImpl;
-import com.transation.apptransation.service.ServiceException;
+import com.transation.apptransation.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,42 +18,43 @@ public class OfficeControler {
 
 
     @GetMapping("/office")
-    public String vieOffice(Model model) throws Exception {
+    public String vieOffice(Model model) throws ServiceException {
         try {
             model.addAttribute("listEmployees", employeeService.getAllEmployees());
 
-        } catch (ServiceException e) {
-            throw new Exception(e.getMessage());
+        } catch (RuntimeException e) {
+            throw new ServiceException(e.getMessage());
         }
         return "office";
     }
 
 
     @GetMapping("/showFormForMessage/{id}")
-    public String showFormForMessage(@PathVariable(value = "id") long id, Model model) throws Exception {
+    public String showFormForMessage(@PathVariable(value = "id") long id, Model model) throws ServiceException  {
         try {
-
             Employee employee = employeeService.getEmployeeById(id);
             model.addAttribute("employee", employee);
-        } catch (ServiceException e) {
-            throw new Exception(e.getMessage());
-        }
 
+        } catch (RuntimeException e) {
+            throw new ServiceException(e.getMessage());
+        }
         return "update_employee";
     }
 
 
 
     @PostMapping("/saveStudent")
-    public String saveStudent(@ModelAttribute("employee") Employee employee) throws Exception {
+    public String saveStudent(@ModelAttribute("employee") Employee  employee) throws ServiceException {
         try {
             employeeService.saveEmployee(employee);
-        } catch (ServiceException e) {
-            throw new Exception(e.getMessage());
-        }
 
+        } catch (RuntimeException e) {
+            throw new ServiceException(e.getMessage());
+        }
         return "redirect:/office";
     }
+
+
 
 
 }

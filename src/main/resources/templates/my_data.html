@@ -8,10 +8,12 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a th:href="@{/users}" th:text="#{new_employee.backTo}"></a>
-    </div>
+    <a class="navbar-brand" th:href="@{/users}" th:text="#{new_employee.backTo}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 </nav>
+
 
 <div class="container text-center">
     <div class="container my-2">
@@ -31,18 +33,19 @@
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_pe}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.send_message}"></th>
 
+
             </tr>
             <tr th:each="student : ${passportNumber}">
-                <td th:text="${passportNumber.id}"></td>
-                <td th:text="${passportNumber.firstName}"></td>
-                <td th:text="${passportNumber.lastName}"></td>
+                <td th:text="${passportNumber.passport.id}"></td>
+                <td th:text="${passportNumber.passport.firstName}"></td>
+                <td th:text="${passportNumber.passport.lastName}"></td>
                 <td th:text="${passportNumber.email}"></td>
-                <td th:text="${passportNumber.passportNumber}"></td>
-                <td th:text="${passportNumber.date}"></td>
-                <td th:text="${passportNumber.country}"></td>
+                <td th:text="${passportNumber.passport.passportNumber}"></td>
+                <td th:text="${passportNumber.passport.date}"></td>
+                <td th:text="${passportNumber.passport.country}"></td>
                 <td th:text="${passportNumber.universityCode}"></td>
-                <td th:text="${passportNumber.birthday}"></td>
-                <td th:text="${passportNumber.passportExpired}"></td>
+                <td th:text="${passportNumber.passport.birthday}"></td>
+                <td th:text="${passportNumber.passport.passportExpired}"></td>
                 <td class="shadow-lg p-3 mb-5 bg-body rounded" th:text="${passportNumber.message}"></td>
 
 
