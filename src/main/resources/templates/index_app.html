@@ -72,8 +72,12 @@
     <div class="card-body">
         <h5 class="card-title" th:text="${employee.email}"><a th:text="#{index_app.emil}"></a></h5>
         <a th:text="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"></a>
-        <p class="shadow-lg p-3 mb-5 bg-body rounded" th:text="${employee.message}"></p>
-        <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-outline-dark"><a th:text="#{index_app.click}"></a></a>
+        <br>
+        <span class="form-check-label p-1 mb-5 bg-success text-white "  th:text="${employee.visa}"></span>
+        <p class="shadow-lg p-5 mb-4 bg-body rounded" th:text="${employee.message}"></p>
+
+
+        <button th:href="@{/deleteEmployee/{id}(id=${employee.id})}" type="button" class="btn btn-warning"><a th:text="#{index_app.click}"></a></button>
     </div>
 </div>
 

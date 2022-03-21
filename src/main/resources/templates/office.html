@@ -33,8 +33,10 @@
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_u}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_b}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_pe}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_v}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.send_message}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_a}"></th>
+
             </tr>
             <tr th:each="employee : ${listEmployees}">
                 <td th:text="${employee.passport.firstName}"></td>
@@ -46,7 +48,9 @@
                 <td th:text="${employee.universityCode}"></td>
                 <td th:text="${employee.passport.birthday}"></td>
                 <td th:text="${employee.passport.passportExpired}"></td>
+                <td th:text="${employee.visa}"></td>
                 <td th:text="${employee.message}"></td>
+
 
                 <td class="btn-group" role="group">
                     <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-outline-info shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.send_message}"></a><br>

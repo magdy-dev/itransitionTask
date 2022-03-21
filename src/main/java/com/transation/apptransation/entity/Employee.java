@@ -30,12 +30,16 @@ public class Employee {
     @Column(name = "message")
     private String message;
 
+    @Column(name = "visa")
+    private boolean visa;
+
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "passport_id", referencedColumnName = "id")
     private Passport passport;
 
-    public Employee(long id, String email, String universityCode, String message, Passport passport) {
+    public Employee(long id,boolean visa, String email, String universityCode, String message, Passport passport) {
         this.id = id;
+        this.visa=visa;
         this.email = email;
         this.universityCode = universityCode;
         this.message = message;
@@ -45,6 +49,13 @@ public class Employee {
     public Employee() {
     }
 
+    public boolean isVisa() {
+        return visa;
+    }
+
+    public void setVisa(boolean visa) {
+        this.visa = visa;
+    }
 
     public long getId() {
         return id;

@@ -44,9 +44,14 @@
         <input type="hidden" th:field="*{passport.passportExpired}" />
         <a th:text="#{message.m}"></a>
         <textarea type="text" th:field="*{message}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded"></textarea>
-
+        <input type="hidden" th:text="#{check.visa}" />
+        <div class="form-check mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded ">
+            <input class="form-check-input mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded" type="checkbox" th:field="*{visa}" value="" id="flexCheckDefault">
+            <label class="form-check-label "  for="flexCheckDefault"></label>
+        </div>
         <button type="submit" class="btn btn-info col-2 shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.send}"></button>
     </form>
+
     <hr>
 
 </div>
