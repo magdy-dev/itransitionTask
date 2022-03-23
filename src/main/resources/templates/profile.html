@@ -9,12 +9,14 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" th:href="@{/showNewEmployeeForm}" th:text="#{profile.info}"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" th:href="@{/users}" th:text="#{new_employee.backTo}"><span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" th:href="@{/users}" th:text="#{new_employee.backTo}"><span
+                    class="sr-only">(current)</span></a>
         </div>
     </div>
 </nav>
@@ -52,6 +54,7 @@
     </div>
 
 </span>
+<footer class="link-warning shadow-lg p-2 mb-3 bg-secondary text-white">@ITransation</footer>
 </body>
 </html>
 

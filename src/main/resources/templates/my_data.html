@@ -9,7 +9,8 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" th:href="@{/users}" th:text="#{new_employee.backTo}"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
@@ -31,6 +32,7 @@
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_u}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_b}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_pe}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.table_vi}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.send_message}"></th>
 
 
@@ -46,6 +48,7 @@
                 <td th:text="${passportNumber.universityCode}"></td>
                 <td th:text="${passportNumber.passport.birthday}"></td>
                 <td th:text="${passportNumber.passport.passportExpired}"></td>
+                <td th:text="${passportNumber.visa}"></td>
                 <td class="shadow-lg p-3 mb-5 bg-body rounded" th:text="${passportNumber.message}"></td>
 
 
@@ -54,5 +57,6 @@
         </table>
     </div>
 </div>
+<footer class="link-warning shadow-lg p-2 mb-3 bg-secondary text-white">@ITransation</footer>
 </body>
 </html>

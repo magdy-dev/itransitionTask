@@ -10,14 +10,15 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" th:href="@{/logout}" methods="post">logout</a>
-    <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link disabled"th:href="@{/office}" th:text="#{office.back}"> </a>
+                <a class="nav-link disabled" th:href="@{/office}" th:text="#{office.back}"> </a>
             </li>
         </ul>
     </div>
@@ -33,27 +34,30 @@
         <input type="hidden" th:field="*{id}"/>
         <input type="hidden" th:field="*{passport.id}"/>
         <a th:text="#{message.n}"></a>
-        <input type="text" th:field="*{passport.firstName}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded" />
-        <input type="hidden" th:field="*{passport.lastName}" />
-        <input type="hidden" th:field="*{email}" />
-        <input type="hidden" th:field="*{passport.passportNumber}" />
+        <input type="text" th:field="*{passport.firstName}"
+               class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded"/>
+        <input type="hidden" th:field="*{passport.lastName}"/>
+        <input type="hidden" th:field="*{email}"/>
+        <input type="hidden" th:field="*{passport.passportNumber}"/>
         <input type="hidden" th:field="*{passport.date}"/>
-        <input type="hidden" th:field="*{passport.country}" />
-        <input type="hidden" th:field="*{universityCode}" />
-        <input type="hidden" th:field="*{passport.birthday}" />
-        <input type="hidden" th:field="*{passport.passportExpired}" />
+        <input type="hidden" th:field="*{passport.country}"/>
+        <input type="hidden" th:field="*{universityCode}"/>
+        <input type="hidden" th:field="*{passport.birthday}"/>
+        <input type="hidden" th:field="*{passport.passportExpired}"/>
         <a th:text="#{message.m}"></a>
-        <textarea type="text" th:field="*{message}" class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded"></textarea>
-        <input type="hidden" th:text="#{check.visa}" />
+        <textarea type="text" th:field="*{message}"
+                  class="form-control mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded"></textarea>
+        <input type="hidden" th:text="#{check.visa}"/>
         <div class="form-check mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded ">
-            <input class="form-check-input mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded" type="checkbox" th:field="*{visa}" value="" id="flexCheckDefault">
-            <label class="form-check-label "  for="flexCheckDefault"></label>
+            <input class="form-check-input mb-4 col-4 shadow-lg p-3 mb-5 bg-body rounded" type="checkbox"
+                   th:field="*{visa}" value="" id="flexCheckDefault">
+            <label class="form-check-label " for="flexCheckDefault"></label>
         </div>
-        <button type="submit" class="btn btn-info col-2 shadow-lg p-3 mb-5 bg-body rounded" th:text="#{office.send}"></button>
+        <button type="submit" class="btn btn-info col-2 shadow-lg p-3 mb-5 bg-body rounded"
+                th:text="#{office.send}"></button>
     </form>
-
     <hr>
-
 </div>
+<footer class="link-warning shadow-lg p-2 mb-3 bg-secondary text-white">@ITransation</footer>
 </body>
 </html>

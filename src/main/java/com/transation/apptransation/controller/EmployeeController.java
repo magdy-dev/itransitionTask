@@ -38,8 +38,6 @@ public class EmployeeController {
     public String showNewEmployeeForm(Model model) throws ServiceException {
 
         try {
-
-
             Employee employee = new Employee();
             model.addAttribute("employee", employee);
         } catch (RuntimeException e) {
@@ -109,6 +107,18 @@ public class EmployeeController {
         }
         return "/my_data";
 
+    }
+
+
+    @GetMapping("/visaList")
+    public String visaList(Model model) throws ServiceException {
+        try {
+            model.addAttribute("list", employeeService.getAllEmployees());
+
+        } catch (RuntimeException e) {
+            throw new ServiceException(e.getMessage());
+        }
+        return "visa_list";
     }
 
 
