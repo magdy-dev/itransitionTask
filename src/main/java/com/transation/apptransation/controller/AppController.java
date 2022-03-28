@@ -57,13 +57,13 @@ public class AppController {
     }
 
     @GetMapping("/registerAdmin")
-    public String showRegistrationFormAdmin(Model model) throws ServiceException {
+    public String showRegistrationFormAdmin(Model model) throws Exception {
 
         try {
             model.addAttribute("user", new User());
 
         } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+            throw new Exception(e.getMessage());
         }
         return "signup_form_admin";
     }

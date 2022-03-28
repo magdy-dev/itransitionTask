@@ -1,6 +1,7 @@
 package com.transation.apptransation.controller;
 
 
+import com.sun.xml.internal.ws.handler.HandlerException;
 import com.transation.apptransation.entity.Employee;
 import com.transation.apptransation.service.EmployeeService;
 
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 
 @Controller
 
@@ -24,47 +27,47 @@ public class EmployeeController {
 
 
     @GetMapping("/users")
-    public String viewHomePage(Model model) throws ServiceException {
+    public String viewHomePage(Model model) throws Exception {
         try {
             model.addAttribute("listEmployees", employeeService.getAllEmployees());
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "index_app";
     }
 
     @GetMapping("/showNewEmployeeForm")
-    public String showNewEmployeeForm(Model model) throws ServiceException {
+    public String showNewEmployeeForm(Model model) throws Exception {
 
         try {
             Employee employee = new Employee();
             model.addAttribute("employee", employee);
         } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+            throw new Exception(e.getMessage());
         }
         return "new_employee";
     }
 
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee) throws ServiceException {
+    public String saveEmployee(@ModelAttribute("employee") Employee employee) throws Exception {
         try {
             employeeService.saveEmployee(employee);
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "redirect:/users";
     }
 
     @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) throws ServiceException {
+    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) throws Exception {
         try {
             Employee employee = employeeService.getEmployeeById(id);
             model.addAttribute("employee", employee);
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "update_employee";
     }
@@ -74,27 +77,27 @@ public class EmployeeController {
         try {
             this.employeeService.deleteEmployeeById(id);
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "redirect:/users";
     }
 
 
     @GetMapping("/myProfile")
-    public String myProfile(Model model) throws ServiceException {
+    public String myProfile(Model model) throws Exception {
         try {
             model.addAttribute("student", employeeService.getAllEmployees());
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "/profile";
     }
 
 
     @PostMapping("/findStudent")
-    public String findStudent(Model model, @Param("passportNumber") String passportNumber) throws ServiceException {
+    public String findStudent(Model model, @Param("passportNumber")  String passportNumber) throws Exception {
         try {
 
             if (passportNumber != null && !passportNumber.isEmpty()) {
@@ -102,8 +105,8 @@ public class EmployeeController {
             } else {
                 return "/my_data";
             }
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "/my_data";
 
@@ -111,12 +114,12 @@ public class EmployeeController {
 
 
     @GetMapping("/visaList")
-    public String visaList(Model model) throws ServiceException {
+    public String visaList(Model model) throws Exception {
         try {
             model.addAttribute("list", employeeService.getAllEmployees());
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "visa_list";
     }

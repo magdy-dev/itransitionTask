@@ -7,7 +7,6 @@ import com.transation.apptransation.exception.ServiceException;
 import com.transation.apptransation.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -79,7 +78,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findStudentByNumber(String passportNumber) throws ServiceException {
+    public Employee findStudentByNumber(String passportNumber) {
 
 
         Employee employee = employeeRepository.findByPassportPassportNumber(passportNumber.toUpperCase());

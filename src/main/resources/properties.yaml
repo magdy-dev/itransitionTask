@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+  datasource:
+    password: '12345'
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    hikari:
+      maximum-pool-size: '10'
+    url: jdbc:postgresql://localhost:5432/itransation
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+server:
+  error:
+    whitelabel:
+      enabled: 'false'
+    include-stacktrace: always
+    include-exception: 'true'
+    include-message: always

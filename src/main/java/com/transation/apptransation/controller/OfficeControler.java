@@ -1,5 +1,6 @@
 package com.transation.apptransation.controller;
 
+import com.sun.xml.internal.ws.handler.HandlerException;
 import com.transation.apptransation.entity.Employee;
 import com.transation.apptransation.service.EmployeeServiceImpl;
 import com.transation.apptransation.exception.ServiceException;
@@ -18,25 +19,25 @@ public class OfficeControler {
 
 
     @GetMapping("/office")
-    public String vieOffice(Model model) throws ServiceException {
+    public String vieOffice(Model model) throws Exception {
         try {
             model.addAttribute("listEmployees", employeeService.getAllEmployees());
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "office";
     }
 
 
     @GetMapping("/showFormForMessage/{id}")
-    public String showFormForMessage(@PathVariable(value = "id") long id, Model model) throws ServiceException  {
+    public String showFormForMessage(@PathVariable(value = "id") long id, Model model) throws Exception {
         try {
             Employee employee = employeeService.getEmployeeById(id);
             model.addAttribute("employee", employee);
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "update_employee";
     }
@@ -44,12 +45,12 @@ public class OfficeControler {
 
 
     @PostMapping("/saveStudent")
-    public String saveStudent(@ModelAttribute("employee") Employee  employee) throws ServiceException {
+    public String saveStudent(@ModelAttribute("employee") Employee  employee) throws Exception {
         try {
             employeeService.saveEmployee(employee);
 
-        } catch (RuntimeException e) {
-            throw new ServiceException(e.getMessage());
+        } catch (ServiceException e) {
+            throw new Exception(e.getMessage());
         }
         return "redirect:/office";
     }
