@@ -53,6 +53,7 @@
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{ index_app.university}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{ index_app.birthday}"></th>
                 <th class="shadow-lg p-3 mb-5 bg-body rounded" th:text="#{index_app.expiredp}"></th>
+                <th class="shadow-lg p-3 mb-5 bg-body rounded">File</th>
 
             </tr>
             <tr th:each="employee : ${listEmployees}">
@@ -65,6 +66,7 @@
                 <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.universityCode}"></td>
                 <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.passport.birthday}"></td>
                 <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${employee.passport.passportExpired}"></td>
+                <td class="shadow-none p-3 mb-5 bg-light rounded" th:text="${file}"></td>
 
                 <td class="btn-group" role="group">
 

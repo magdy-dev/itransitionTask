@@ -142,6 +142,24 @@
         <input type="date" th:field="*{passport.passportExpired}" placeholder="PassportExpired"
                class="form-control mb-4 col-4"
                required>
+        <input id="fileupload" type="file" name="file" />
+        <button id="upload-button" onclick="uploadFile()"> Upload </button>
+
+        <!-- Ajax JavaScript File Upload to Spring Boot Logic -->
+        <script>
+            async function uploadFile() {
+                let formData = new FormData();
+                formData.append("file", fileupload.files[0]);
+                let response = await fetch('/upload', {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.status == 200) {
+                    alert("File successfully uploaded.");
+                }
+            }
+        </script>
 
         <button type="submit" class="btn btn-info col-2" th:text="#{new_employee.save}"></button>
     </form>
